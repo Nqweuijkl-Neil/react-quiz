@@ -95,7 +95,10 @@ export default function App() {
     ] = useReducer(reducer, initializeState);
 
     const numQuestions = questions.length;
-    const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
+    const maxPoints = (Array.isArray(questions) ? questions : []).reduce(
+        (prev, cur) => prev + cur.points,
+        0,
+    );
     useEffect(() => {
         fetch("/questions.json")
             .then((res) => res.json())
