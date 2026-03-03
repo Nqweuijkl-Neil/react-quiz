@@ -95,18 +95,12 @@ export default function App() {
     ] = useReducer(reducer, initializeState);
 
     const numQuestions = questions.length;
-    const maxPoints = (Array.isArray(questions) ? questions : []).reduce(
-        (prev, cur) => prev + cur.points,
-        0,
-    );
+    const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
     useEffect(() => {
         fetch("/questions.json")
             .then((res) => res.json())
             .then((data) => {
-                dispatch({
-                    type: "dataReceived",
-                    payload: Array.isArray(data) ? data : [],
-                });
+                dispatch({ type: "dataReceived", payload: data.questions });
                 console.log(data);
             })
             .catch(() => dispatch({ type: "dataFailed" }));
