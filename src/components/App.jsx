@@ -97,7 +97,7 @@ export default function App() {
     const numQuestions = questions.length;
     const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
     useEffect(() => {
-        fetch("http://localhost:8000/questions")
+        fetch("/questions.json")
             .then((res) => res.json())
             .then((data) => {
                 dispatch({ type: "dataReceived", payload: data });
