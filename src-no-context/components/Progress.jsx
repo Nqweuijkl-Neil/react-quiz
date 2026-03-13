@@ -1,15 +1,12 @@
-import { useQuizzes } from "../hooks/useQuizzes";
-
-function Progress() {
-    const { index, numQuestions, points, maxPoints, answer } = useQuizzes();
+function Progress({ index, numQuestion, points, maxPoints, answer }) {
     return (
         <header className="progress">
             <progress
-                max={numQuestions}
+                max={numQuestion}
                 value={index + Number(answer !== null)}
             />
             <p>
-                Question <strong>{index + 1}</strong> / {numQuestions}
+                Question <strong>{index + 1}</strong> / {numQuestion}
             </p>
             <p>
                 <strong>{points}</strong> / {maxPoints}

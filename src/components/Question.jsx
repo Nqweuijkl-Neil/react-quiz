@@ -1,11 +1,13 @@
+import { useQuizzes } from "../hooks/useQuizzes";
 import Options from "./Options";
 
-function Question({ question, answer, dispatch }) {
-    console.log(question.options);
+function Question() {
+    const { questions, index } = useQuizzes();
+    const question = questions.at(index);
     return (
         <div>
             <h4>{question.question}</h4>
-            <Options question={question} dispatch={dispatch} answer={answer} />
+            <Options question={question} />
         </div>
     );
 }

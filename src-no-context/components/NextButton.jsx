@@ -1,7 +1,4 @@
-import { useQuizzes } from "../hooks/useQuizzes";
-
-function NextButton() {
-    const { dispatch, index, numQuestions } = useQuizzes();
+function NextButton({ dispatch, index, numQuestions }) {
     if (index < numQuestions - 1)
         return (
             <button

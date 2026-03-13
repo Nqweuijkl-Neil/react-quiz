@@ -1,7 +1,4 @@
-import { useQuizzes } from "../hooks/useQuizzes";
-
-function StartScreen() {
-    const { numQuestions, dispatch } = useQuizzes();
+function StartScreen({ numQuestions, dispatch }) {
     return (
         <div className="start">
             <h2>Welcome to the React Quiz!</h2>
